@@ -1,0 +1,14 @@
+### NOW ###
+    ...
+
+### SOON ###
+    implement individual formatters
+
+    add support for macro formatting
+        might need to allow macros to be CMainEntity
+        or create special class for that, but that might be redundant
+
+    add test for classes
+        Indentation
+        Formatter
+        Writer
