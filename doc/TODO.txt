@@ -3,6 +3,12 @@
 
 ### SOON ###
     implement individual formatters
+        EnumFormatter
+        FunctionFormatter
+        StructFormatter
+        UnionFormatter
+        VariableFormatter
+        TypedefFormatter
 
     add support for macro and macro call formatting
         might need to allow macros and macro calls to be CMainEntity
@@ -12,3 +18,14 @@
         Indentation
         Formatter
         Writer
+        CEntityFormatters
+        CEntityFormatter implementations
+            EnumFormatter
+            FunctionFormatter
+            StructFormatter
+            UnionFormatter
+            VariableFormatter
+            TypedefFormatter
+
+### LATER ###
+    ...
