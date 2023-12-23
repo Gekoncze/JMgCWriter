@@ -2,7 +2,12 @@
     ...
 
 ### SOON ###
-    implement individual formatters
+    add type formatter
+        its result can be multi-line (for inline types) or single-line
+        this should be handled correctly
+        and also correctly handled by its users
+
+    implement individual formatters + add tests
         EnumFormatter
         FunctionFormatter
         StructFormatter
@@ -10,22 +15,13 @@
         VariableFormatter
         TypedefFormatter
 
-    add support for macro and macro call formatting
-        might need to allow macros and macro calls to be CMainEntity
-        or create special class for that, but that might be redundant
-
     add test for classes
         Indentation
         Formatter
         Writer
         CEntityFormatters
-        CEntityFormatter implementations
-            EnumFormatter
-            FunctionFormatter
-            StructFormatter
-            UnionFormatter
-            VariableFormatter
-            TypedefFormatter
 
 ### LATER ###
-    ...
+    add support for macro and macro call formatting
+        might need to allow macros and macro calls to be CMainEntity
+        or create special class for that, but that might be redundant
