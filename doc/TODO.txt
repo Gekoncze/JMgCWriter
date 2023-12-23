@@ -4,8 +4,8 @@
 ### SOON ###
     implement individual formatters
 
-    add support for macro formatting
-        might need to allow macros to be CMainEntity
+    add support for macro and macro call formatting
+        might need to allow macros and macro calls to be CMainEntity
         or create special class for that, but that might be redundant
 
     add test for classes
