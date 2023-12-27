@@ -50,7 +50,7 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
     }
 
     private @Mandatory List<String> formatTypename(@Mandatory CType type) {
-        List<String> lines = new List<>(type.getTypename().getName().getText());
+        List<String> lines = new List<>(type.getTypename().getName());
         addConstAndPointers(lines, type);
         return lines;
     }

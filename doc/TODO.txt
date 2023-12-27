@@ -1,5 +1,7 @@
 ### NOW ###
     add type formatter test
+        consider if const for typename should be placed before
+        fix failing tests
 
 ### SOON ###
     implement individual formatters + add tests
