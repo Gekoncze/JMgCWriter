@@ -1,18 +1,18 @@
 ### NOW ###
-    add type formatter test
-        consider if const for typename should be placed before
-        fix failing tests
+    ...
 
 ### SOON ###
     implement individual formatters + add tests
-        + make sure that ; is added when formatted for statements
+        VariableFormatter (dont forget to handle multi line types correctly)
+        StructFormatter
+        UnionFormatter
         EnumFormatter
         FunctionFormatter
         FunctionPointerFormatter
-        StructFormatter
-        UnionFormatter
-        VariableFormatter (dont forget to handle multi line types correctly)
         TypedefFormatter
+        + make sure that ; is added when formatted for statements
+
+    add more type formatter tests
 
     add test for classes
         Indentation
