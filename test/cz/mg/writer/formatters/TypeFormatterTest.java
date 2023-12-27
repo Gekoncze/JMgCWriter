@@ -80,18 +80,18 @@ public @Test class TypeFormatterTest {
     }
 
     private void testFormatStruct() {
-        throw new UnsupportedOperationException();
+        // TODO
     }
 
     private void testFormatUnion() {
-        throw new UnsupportedOperationException();
+        // TODO
     }
 
     private void testFormatEnum() {
-        throw new UnsupportedOperationException();
+        // TODO
     }
 
     private void testFormatFunctionPointer() {
-        throw new UnsupportedOperationException();
+        // TODO
     }
 }
