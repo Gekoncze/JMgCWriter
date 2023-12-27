@@ -2,7 +2,6 @@
     ...
 
 ### SOON ###
-    add TokenFormatter test
     add ExpressionFormatter test
     add VariableFormatter test
 
