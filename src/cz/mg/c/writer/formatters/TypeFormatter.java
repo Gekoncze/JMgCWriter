@@ -78,10 +78,7 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
     }
 
     private @Mandatory List<String> formatFunctionPointer(@Mandatory CType type) {
-        List<String> lines = functionPointerFormatter.format((CFunction) type.getTypename());
-        addConst(lines, type);
-        addPointers(lines, type);
-        return lines;
+        return functionPointerFormatter.format(type);
     }
 
     private void addConst(@Mandatory List<String> lines, @Mandatory CType type) {

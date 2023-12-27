@@ -2,13 +2,17 @@
     ...
 
 ### SOON ###
+    add TokenFormatter test
+    add ExpressionFormatter test
+    add VariableFormatter test
+
     implement individual formatters + add tests
-        VariableFormatter (dont forget to handle multi line types correctly)
         StructFormatter
         UnionFormatter
         EnumFormatter
         FunctionFormatter
         FunctionPointerFormatter
+            handle name, const, pointers and arrays correctly
         TypedefFormatter
         + make sure that ; is added when formatted for statements
 
