@@ -52,6 +52,9 @@ public @Service class TokenFormatter {
         }
 
         if (token instanceof SingleLineCommentToken) {
+            if (token.getText().contains("\n")) {
+                throw new IllegalArgumentException("Single line comment token cannot contain newline.");
+            }
             return "//" + token.getText();
         }
 

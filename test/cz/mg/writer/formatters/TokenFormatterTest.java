@@ -110,6 +110,10 @@ public @Test class TokenFormatterTest {
                 "// foo",
                 tokenFormatter.format(new SingleLineCommentToken(" foo", 0))
         );
+
+        Assert.assertThatCode(() -> {
+            tokenFormatter.format(new SingleLineCommentToken("abc\ndef", 0));
+        }).throwsException(IllegalArgumentException.class);
     }
 
     private void testFormatMultiLineComment() {
