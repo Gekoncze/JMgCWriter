@@ -2,6 +2,7 @@ package cz.mg.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.classes.Test;
+import cz.mg.c.parser.entities.CPointer;
 import cz.mg.c.parser.entities.CType;
 import cz.mg.c.parser.entities.CTypename;
 import cz.mg.c.writer.formatters.TypeFormatter;
@@ -30,24 +31,52 @@ public @Test class TypeFormatterTest {
 
     private void testFormatTypename() {
         CType type = new CType(new CTypename("int"), false, new List<>(), new List<>());
-        Assert.assertThatCollections(new List<>("int"), typeFormatter.format(type)).areEqual();
+        Assert.assertThatCollections(new List<>("int"), typeFormatter.format(type))
+                .withPrintFunction(line -> '"' + line + '"')
+                .areEqual();
     }
 
     private void testFormatConstant() {
         CType type = new CType(new CTypename("int"), true, new List<>(), new List<>());
-        Assert.assertThatCollections(new List<>("int const"), typeFormatter.format(type)).areEqual(); // TODO - fix
+        Assert.assertThatCollections(new List<>("const int"), typeFormatter.format(type))
+                .withPrintFunction(line -> '"' + line + '"')
+                .areEqual();
     }
 
     private void testFormatPointersWithoutConst() {
-        throw new UnsupportedOperationException();
+        CType type = new CType(
+                new CTypename("int"),
+                false,
+                new List<>(new CPointer(false), new CPointer(false)),
+                new List<>()
+        );
+        Assert.assertThatCollections(new List<>("int**"), typeFormatter.format(type))
+                .withPrintFunction(line -> '"' + line + '"')
+                .areEqual();
     }
 
     private void testFormatPointersWithConst() {
-        throw new UnsupportedOperationException();
+        CType type = new CType(
+                new CTypename("int"),
+                false,
+                new List<>(new CPointer(true), new CPointer(true)),
+                new List<>()
+        );
+        Assert.assertThatCollections(new List<>("int* const * const"), typeFormatter.format(type))
+                .withPrintFunction(line -> '"' + line + '"')
+                .areEqual();
     }
 
     private void testFormatPointersWithMixedConst() {
-        throw new UnsupportedOperationException();
+        CType type = new CType(
+                new CTypename("int"),
+                false,
+                new List<>(new CPointer(true), new CPointer(false), new CPointer(false)),
+                new List<>()
+        );
+        Assert.assertThatCollections(new List<>("int* const **"), typeFormatter.format(type))
+                .withPrintFunction(line -> '"' + line + '"')
+                .areEqual();
     }
 
     private void testFormatStruct() {

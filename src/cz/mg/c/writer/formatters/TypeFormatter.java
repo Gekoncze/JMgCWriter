@@ -88,7 +88,7 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
         StringBuilder builder = new StringBuilder(line);
 
         if (type.isConstant()) {
-            builder.append(" const ");
+            builder.insert(0, " const ");
         }
 
         for (CPointer pointer : type.getPointers()) {
@@ -99,6 +99,6 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
             }
         }
 
-        return builder.toString();
+        return builder.toString().trim();
     }
 }
