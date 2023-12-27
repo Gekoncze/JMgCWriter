@@ -1,9 +1,7 @@
 ### NOW ###
-    ...
-
-### SOON ###
     add type formatter test
 
+### SOON ###
     implement individual formatters + add tests
         + make sure that ; is added when formatted for statements
         EnumFormatter
