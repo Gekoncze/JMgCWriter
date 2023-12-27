@@ -2,7 +2,6 @@
     ...
 
 ### SOON ###
-    add ExpressionFormatter test
     add VariableFormatter test
 
     implement individual formatters + add tests
