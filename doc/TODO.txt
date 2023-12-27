@@ -2,17 +2,16 @@
     ...
 
 ### SOON ###
-    add type formatter
-        its result can be multi-line (for inline types) or single-line
-        this should be handled correctly
-        and also correctly handled by its users
+    add type formatter test
 
     implement individual formatters + add tests
+        + make sure that ; is added when formatted for statements
         EnumFormatter
         FunctionFormatter
+        FunctionPointerFormatter
         StructFormatter
         UnionFormatter
-        VariableFormatter
+        VariableFormatter (dont forget to handle multi line types correctly)
         TypedefFormatter
 
     add test for classes
