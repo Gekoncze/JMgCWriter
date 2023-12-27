@@ -51,45 +51,61 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
 
     private @Mandatory List<String> formatTypename(@Mandatory CType type) {
         List<String> lines = new List<>(type.getTypename().getName());
-        addConstAndPointers(lines, type);
+        addConst(lines, type);
+        addPointers(lines, type);
         return lines;
     }
 
     private @Mandatory List<String> formatStruct(@Mandatory CType type) {
         List<String> lines = structFormatter.format((CStruct) type.getTypename());
-        addConstAndPointers(lines, type);
+        addConst(lines, type);
+        addPointers(lines, type);
         return lines;
     }
 
     private @Mandatory List<String> formatUnion(@Mandatory CType type) {
         List<String> lines = unionFormatter.format((CUnion) type.getTypename());
-        addConstAndPointers(lines, type);
+        addConst(lines, type);
+        addPointers(lines, type);
         return lines;
     }
 
     private @Mandatory List<String> formatEnum(@Mandatory CType type) {
         List<String> lines = enumFormatter.format((CEnum) type.getTypename());
-        addConstAndPointers(lines, type);
+        addConst(lines, type);
+        addPointers(lines, type);
         return lines;
     }
 
     private @Mandatory List<String> formatFunctionPointer(@Mandatory CType type) {
         List<String> lines = functionPointerFormatter.format((CFunction) type.getTypename());
-        addConstAndPointers(lines, type);
+        addConst(lines, type);
+        addPointers(lines, type);
         return lines;
     }
 
-    private void addConstAndPointers(@Mandatory List<String> lines, @Mandatory CType type) {
-        ListItem<String> lineItem = lines.getLastItem();
-        lineItem.set(addConstAndPointers(lineItem.get(), type));
+    private void addConst(@Mandatory List<String> lines, @Mandatory CType type) {
+        ListItem<String> lineItem = lines.getFirstItem();
+        lineItem.set(addConst(lineItem.get(), type));
     }
 
-    private @Mandatory String addConstAndPointers(@Mandatory String line, @Mandatory CType type) {
+    private @Mandatory String addConst(@Mandatory String line, @Mandatory CType type) {
         StringBuilder builder = new StringBuilder(line);
 
         if (type.isConstant()) {
             builder.insert(0, " const ");
         }
+
+        return builder.toString().trim();
+    }
+
+    private void addPointers(@Mandatory List<String> lines, @Mandatory CType type) {
+        ListItem<String> lineItem = lines.getLastItem();
+        lineItem.set(addPointers(lineItem.get(), type));
+    }
+
+    private @Mandatory String addPointers(@Mandatory String line, @Mandatory CType type) {
+        StringBuilder builder = new StringBuilder(line);
 
         for (CPointer pointer : type.getPointers()) {
             builder.append("*");
