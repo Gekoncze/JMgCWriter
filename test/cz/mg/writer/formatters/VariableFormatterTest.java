@@ -31,39 +31,39 @@ public @Test class VariableFormatterTest {
 
     private void testFormatNamed() {
         CVariable variable = new CVariable(
-                new CType(new CTypename("int"), false, new List<>(), new List<>()),
-                "foo"
+            new CType(new CTypename("int"), false, new List<>(), new List<>()),
+            "foo"
         );
 
         lineValidator.validate(
-                variableFormatter.format(variable),
-                "int foo"
+            variableFormatter.format(variable),
+            "int foo"
         );
     }
 
     private void testFormatAnonymous() {
         CVariable variable = new CVariable(
-                new CType(new CTypename("int"), false, new List<>(), new List<>()),
-                null
+            new CType(new CTypename("int"), false, new List<>(), new List<>()),
+            null
         );
 
         lineValidator.validate(
-                variableFormatter.format(variable),
-                "int"
+            variableFormatter.format(variable),
+            "int"
         );
     }
 
     private void testFormatArray() {
         CVariable variable = new CVariable(
-                new CType(new CTypename("int"), false, new List<>(), new List<>(
-                        new CArray(new List<>(new NumberToken("5",  0)))
-                )),
-                "foo"
+            new CType(new CTypename("int"), false, new List<>(), new List<>(
+                new CArray(new List<>(new NumberToken("5",  0)))
+            )),
+            "foo"
         );
 
         lineValidator.validate(
-                variableFormatter.format(variable),
-                "int foo[5]"
+            variableFormatter.format(variable),
+            "int foo[5]"
         );
     }
 

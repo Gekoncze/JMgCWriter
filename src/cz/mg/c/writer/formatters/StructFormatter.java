@@ -42,12 +42,13 @@ public @Service class StructFormatter implements CEntityFormatter<CStruct> {
     }
 
     private @Mandatory String createHeader(@Mandatory CStruct struct) {
-        StringBuilder builder = new StringBuilder("struct ");
+        StringBuilder builder = new StringBuilder("struct");
         if (struct.getName() != null) {
-            builder.append(struct.getName());
             builder.append(" ");
+            builder.append(struct.getName());
         }
         if (struct.getVariables() != null) {
+            builder.append(" ");
             builder.append("{");
         }
         return builder.toString();

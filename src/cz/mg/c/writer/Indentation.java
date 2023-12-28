@@ -29,6 +29,6 @@ public @Service class Indentation {
     }
 
     private @Mandatory String add(@Mandatory String s) {
-        return "\t" + s;
+        return "    " + s;
     }
 }

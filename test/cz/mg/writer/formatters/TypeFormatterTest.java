@@ -35,55 +35,55 @@ public @Test class TypeFormatterTest {
     private void testFormatTypename() {
         CType type = new CType(new CTypename("int"), false, new List<>(), new List<>());
         lineValidator.validate(
-                typeFormatter.format(type),
-                "int"
+            typeFormatter.format(type),
+            "int"
         );
     }
 
     private void testFormatConstant() {
         CType type = new CType(new CTypename("int"), true, new List<>(), new List<>());
         lineValidator.validate(
-                typeFormatter.format(type),
-                "const int"
+            typeFormatter.format(type),
+            "const int"
         );
     }
 
     private void testFormatPointersWithoutConst() {
         CType type = new CType(
-                new CTypename("int"),
-                false,
-                new List<>(new CPointer(false), new CPointer(false)),
-                new List<>()
+            new CTypename("int"),
+            false,
+            new List<>(new CPointer(false), new CPointer(false)),
+            new List<>()
         );
         lineValidator.validate(
-                typeFormatter.format(type),
-                "int**"
+            typeFormatter.format(type),
+            "int**"
         );
     }
 
     private void testFormatPointersWithConst() {
         CType type = new CType(
-                new CTypename("int"),
-                false,
-                new List<>(new CPointer(true), new CPointer(true)),
-                new List<>()
+            new CTypename("int"),
+            false,
+            new List<>(new CPointer(true), new CPointer(true)),
+            new List<>()
         );
         lineValidator.validate(
-                typeFormatter.format(type),
-                "int* const * const"
+            typeFormatter.format(type),
+            "int* const * const"
         );
     }
 
     private void testFormatPointersWithMixedConst() {
         CType type = new CType(
-                new CTypename("int"),
-                false,
-                new List<>(new CPointer(true), new CPointer(false), new CPointer(false)),
-                new List<>()
+            new CTypename("int"),
+            false,
+            new List<>(new CPointer(true), new CPointer(false), new CPointer(false)),
+            new List<>()
         );
         lineValidator.validate(
-                typeFormatter.format(type),
-                "int* const **"
+            typeFormatter.format(type),
+            "int* const **"
         );
     }
 
