@@ -3,7 +3,6 @@
 
 ### SOON ###
     implement individual formatters + add tests
-        UnionFormatter
         EnumFormatter
         FunctionFormatter
         FunctionPointerFormatter

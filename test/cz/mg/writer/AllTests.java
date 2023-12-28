@@ -10,6 +10,7 @@ public @Test class AllTests {
         StructFormatterTest.main(args);
         TokenFormatterTest.main(args);
         TypeFormatterTest.main(args);
+        UnionFormatterTest.main(args);
         VariableFormatterTest.main(args);
     }
 }
