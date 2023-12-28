@@ -7,6 +7,8 @@ import cz.mg.c.parser.entities.CVariable;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
 
+import java.util.Objects;
+
 public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
     private static volatile @Service VariableFormatter instance;
 
@@ -32,6 +34,7 @@ public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
     @Override
     public @Mandatory List<String> format(@Mandatory CVariable variable) {
         if (variable.getType().getTypename() instanceof CFunction) {
+            validateFunctionPointerName(variable);
             return typeFormatter.format(variable.getType());
         } else {
             List<String> lines = typeFormatter.format(variable.getType());
@@ -64,5 +67,11 @@ public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
 
     private @Mandatory String addArrays(@Mandatory String line, @Mandatory CVariable variable) {
         return line + arrayFormatter.format(variable.getType().getArrays());
+    }
+
+    private void validateFunctionPointerName(@Mandatory CVariable variable) {
+        if (!Objects.equals(variable.getName(), variable.getType().getTypename().getName())) {
+            throw new IllegalArgumentException("Variable name must match function pointer name.");
+        }
     }
 }

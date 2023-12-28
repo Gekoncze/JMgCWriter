@@ -6,6 +6,7 @@ import cz.mg.annotations.classes.Test;
 import cz.mg.c.parser.entities.*;
 import cz.mg.c.writer.formatters.VariableFormatter;
 import cz.mg.collections.list.List;
+import cz.mg.test.Assert;
 import cz.mg.tokenizer.entities.tokens.NumberToken;
 import cz.mg.tokenizer.entities.tokens.OperatorToken;
 import cz.mg.writer.test.LineValidator;
@@ -21,6 +22,7 @@ public @Test class VariableFormatterTest {
         test.testFormatArrays();
         test.testFormatMultiLine();
         test.testFormatFunctionPointer();
+        test.testFunctionPointerNameMustMatch();
 
         System.out.println("OK");
     }
@@ -104,6 +106,35 @@ public @Test class VariableFormatterTest {
     }
 
     private void testFormatFunctionPointer() {
-        // TODO
+        CFunction function = new CFunction(
+            "foo",
+            new CType(new CTypename("void"), false, new List<>(), new List<>()),
+            new List<>(),
+            null
+        );
+
+        CType type = new CType(function, false, new List<>(new CPointer()), new List<>(new CArray()));
+        CVariable variable = new CVariable(type, "foo");
+
+        lineValidator.validate(
+            variableFormatter.format(variable),
+            "void (* foo[])()"
+        );
+    }
+
+    private void testFunctionPointerNameMustMatch() {
+        Assert.assertThatCode(() -> {
+            CFunction function = new CFunction(
+                "foo",
+                new CType(new CTypename("void"), false, new List<>(), new List<>()),
+                new List<>(),
+                null
+            );
+
+            CType type = new CType(function, false, new List<>(new CPointer()), new List<>());
+            CVariable variable = new CVariable(type, "bar");
+
+            variableFormatter.format(variable);
+        }).throwsException(IllegalArgumentException.class);
     }
 }

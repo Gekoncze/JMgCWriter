@@ -6,9 +6,6 @@
         TypedefFormatter
         + make sure that ; is added when formatted for statements
 
-    add more TypeFormatter tests
-    add more VariableFormatter test
-
     add test for classes
         Formatter
         Writer
