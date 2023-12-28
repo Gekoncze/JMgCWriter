@@ -18,7 +18,8 @@ public @Test class FunctionFormatterTest {
         test.testFormatDeclaration();
         test.testFormatDefinition();
         test.testFormatImplementation();
-        test.testValidations();
+        test.testNameCannotBeNull();
+        test.testOutputCannotBeFunctionPointer();
         test.testFormatSingleLineHeader();
         test.testFormatMultiLineHeader();
 
@@ -86,22 +87,24 @@ public @Test class FunctionFormatterTest {
         );
     }
 
-    private void testValidations() {
+    private void testNameCannotBeNull() {
         Assert.assertThatCode(() -> {
             CFunction function = new CFunction(
-                "foo",
-                new CType(new CFunction(), false, new List<>(), new List<>()),
+                null,
+                new CType(new CTypename("void"), false, new List<>(), new List<>()),
                 new List<>(),
                 null
             );
 
             functionFormatter.format(function);
         }).throwsException(IllegalArgumentException.class);
+    }
 
+    private void testOutputCannotBeFunctionPointer() {
         Assert.assertThatCode(() -> {
             CFunction function = new CFunction(
-                null,
-                new CType(new CTypename("void"), false, new List<>(), new List<>()),
+                "foo",
+                new CType(new CFunction(), false, new List<>(), new List<>()),
                 new List<>(),
                 null
             );

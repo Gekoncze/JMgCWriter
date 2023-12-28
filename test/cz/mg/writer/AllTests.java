@@ -12,6 +12,7 @@ public @Test class AllTests {
         ExpressionFormatterTest.main(args);
         FieldsFormatterTest.main(args);
         FunctionFormatterTest.main(args);
+        FunctionPointerFormatterTest.main(args);
         ParametersFormatterTest.main(args);
         PointerFormatterTest.main(args);
         StructFormatterTest.main(args);

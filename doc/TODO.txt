@@ -3,8 +3,6 @@
 
 ### SOON ###
     implement individual formatters + add tests
-        FunctionPointerFormatter
-            handle name, const, pointers and arrays correctly
         TypedefFormatter
         + make sure that ; is added when formatted for statements
 
