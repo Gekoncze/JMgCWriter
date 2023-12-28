@@ -68,7 +68,7 @@ public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
 
         for (CArray array : variable.getType().getArrays()) {
             builder.append("[");
-            builder.append(expressionFormatter.format(array.getExpression()));
+            builder.append(expressionFormatter.formatSingleLine(array.getExpression()));
             builder.append("]");
         }
 

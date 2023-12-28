@@ -28,7 +28,7 @@ public @Service class EnumEntryFormatter {
         StringBuilder builder = new StringBuilder(entry.getName());
         if (entry.getExpression() != null) {
             builder.append(" = ");
-            builder.append(expressionFormatter.format(entry.getExpression()));
+            builder.append(expressionFormatter.formatSingleLine(entry.getExpression()));
         }
         return builder.toString();
     }
