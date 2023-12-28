@@ -17,6 +17,7 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
                     instance.structFormatter = StructFormatter.getInstance();
                     instance.unionFormatter = UnionFormatter.getInstance();
                     instance.enumFormatter = EnumFormatter.getInstance();
+                    instance.pointerFormatter = PointerFormatter.getInstance();
                     instance.functionPointerFormatter = FunctionPointerFormatter.getInstance();
                 }
             }
@@ -27,6 +28,7 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
     private @Service StructFormatter structFormatter;
     private @Service UnionFormatter unionFormatter;
     private @Service EnumFormatter enumFormatter;
+    private @Service PointerFormatter pointerFormatter;
     private @Service FunctionPointerFormatter functionPointerFormatter;
 
     private TypeFormatter() {
@@ -102,16 +104,6 @@ public @Service class TypeFormatter implements CEntityFormatter<CType> {
     }
 
     private @Mandatory String addPointers(@Mandatory String line, @Mandatory CType type) {
-        StringBuilder builder = new StringBuilder(line);
-
-        for (CPointer pointer : type.getPointers()) {
-            builder.append("*");
-
-            if (pointer.isConstant()) {
-                builder.append(" const ");
-            }
-        }
-
-        return builder.toString().trim();
+        return line + pointerFormatter.format(type.getPointers());
     }
 }
