@@ -27,6 +27,7 @@ public @Service class LineValidator
     public void validate(@Mandatory List<String> actualLines, @Mandatory String... expectedLines) {
         Assert.assertThatCollections(new Array<>(expectedLines), actualLines)
                 .withPrintFunction(line -> '"' + line + '"')
+                .verbose("", "\n", "")
                 .areEqual();
     }
 }

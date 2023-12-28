@@ -22,10 +22,11 @@ public @Service class Indentation {
     private Indentation() {
     }
 
-    public void add(@Mandatory List<String> lines) {
+    public @Mandatory List<String> add(@Mandatory List<String> lines) {
         for (ListItem<String> item = lines.getFirstItem(); item != null; item = item.getNextItem()) {
             item.set(add(item.get()));
         }
+        return lines;
     }
 
     private @Mandatory String add(@Mandatory String s) {

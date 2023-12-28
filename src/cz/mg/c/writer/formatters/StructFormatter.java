@@ -3,10 +3,8 @@ package cz.mg.c.writer.formatters;
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.parser.entities.CStruct;
-import cz.mg.c.parser.entities.CVariable;
 import cz.mg.c.writer.Indentation;
 import cz.mg.collections.list.List;
-import cz.mg.collections.list.ListItem;
 
 public @Service class StructFormatter implements CEntityFormatter<CStruct> {
     private static volatile @Service StructFormatter instance;
@@ -16,7 +14,7 @@ public @Service class StructFormatter implements CEntityFormatter<CStruct> {
             synchronized (Service.class) {
                 if (instance == null) {
                     instance = new StructFormatter();
-                    instance.variableFormatter = VariableFormatter.getInstance();
+                    instance.fieldsFormatter = FieldsFormatter.getInstance();
                     instance.indentation = Indentation.getInstance();
                 }
             }
@@ -24,7 +22,7 @@ public @Service class StructFormatter implements CEntityFormatter<CStruct> {
         return instance;
     }
 
-    private @Service VariableFormatter variableFormatter;
+    private @Service FieldsFormatter fieldsFormatter;
     private @Service Indentation indentation;
 
     private StructFormatter() {
@@ -33,15 +31,19 @@ public @Service class StructFormatter implements CEntityFormatter<CStruct> {
     @Override
     public @Mandatory List<String> format(@Mandatory CStruct struct) {
         List<String> lines = new List<>();
-        lines.addLast(createHeader(struct));
+        lines.addLast(formatHeader(struct));
         if (struct.getVariables() != null) {
-            lines.addCollectionLast(createBody(struct.getVariables()));
+            lines.addCollectionLast(
+                indentation.add(
+                    fieldsFormatter.format(struct.getVariables())
+                )
+            );
             lines.addLast("}");
         }
         return lines;
     }
 
-    private @Mandatory String createHeader(@Mandatory CStruct struct) {
+    private @Mandatory String formatHeader(@Mandatory CStruct struct) {
         StringBuilder builder = new StringBuilder("struct");
         if (struct.getName() != null) {
             builder.append(" ");
@@ -52,25 +54,5 @@ public @Service class StructFormatter implements CEntityFormatter<CStruct> {
             builder.append("{");
         }
         return builder.toString();
-    }
-
-    private @Mandatory List<String> createBody(@Mandatory List<CVariable> variables) {
-        List<String> body = new List<>();
-        for (CVariable variable : variables) {
-            List<String> lines = variableFormatter.format(variable);
-            addSeparator(lines);
-            body.addCollectionLast(lines);
-        }
-        indentation.add(body);
-        return body;
-    }
-
-    private void addSeparator(@Mandatory List<String> lines) {
-        ListItem<String> line = lines.getLastItem();
-        line.set(addSeparator(line.get()));
-    }
-
-    private @Mandatory String addSeparator(@Mandatory String line) {
-        return line + ";";
     }
 }
