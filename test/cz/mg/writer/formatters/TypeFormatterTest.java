@@ -7,7 +7,6 @@ import cz.mg.c.parser.entities.CType;
 import cz.mg.c.parser.entities.CTypename;
 import cz.mg.c.writer.formatters.TypeFormatter;
 import cz.mg.collections.list.List;
-import cz.mg.test.Assert;
 import cz.mg.writer.test.LineValidator;
 
 public @Test class TypeFormatterTest {
