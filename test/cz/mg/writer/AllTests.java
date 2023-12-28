@@ -6,6 +6,7 @@ import cz.mg.writer.formatters.*;
 public @Test class AllTests {
     public static void main(String[] args) {
         // cz.mg.c.writer.formatters
+        EnumEntryFormatterTest.main(args);
         ExpressionFormatterTest.main(args);
         FieldsFormatterTest.main(args);
         StructFormatterTest.main(args);

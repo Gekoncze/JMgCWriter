@@ -1,9 +1,8 @@
 ### NOW ###
-    ...
+    EnumFormatter
 
 ### SOON ###
     implement individual formatters + add tests
-        EnumFormatter
         FunctionFormatter
         FunctionPointerFormatter
             handle name, const, pointers and arrays correctly
