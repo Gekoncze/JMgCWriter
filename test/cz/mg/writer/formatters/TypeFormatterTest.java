@@ -2,9 +2,7 @@ package cz.mg.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.classes.Test;
-import cz.mg.c.parser.entities.CPointer;
-import cz.mg.c.parser.entities.CType;
-import cz.mg.c.parser.entities.CTypename;
+import cz.mg.c.parser.entities.*;
 import cz.mg.c.writer.formatters.TypeFormatter;
 import cz.mg.collections.list.List;
 import cz.mg.writer.test.LineValidator;
@@ -87,7 +85,15 @@ public @Test class TypeFormatterTest {
     }
 
     private void testFormatStruct() {
-        // TODO
+        CVariable variable = new CVariable(new CType(new CTypename("int"), false, new List<>(), new List<>()), "i");
+        CStruct struct = new CStruct(null, new List<>(variable));
+        CType type = new CType(struct, true, new List<>(new CPointer()), new List<>());
+        lineValidator.validate(
+            typeFormatter.format(type),
+            "const struct {",
+            "    int i;",
+            "}*"
+        );
     }
 
     private void testFormatUnion() {

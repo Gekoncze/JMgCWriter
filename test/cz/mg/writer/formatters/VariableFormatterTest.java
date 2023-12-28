@@ -3,13 +3,11 @@ package cz.mg.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.classes.Test;
-import cz.mg.c.parser.entities.CArray;
-import cz.mg.c.parser.entities.CType;
-import cz.mg.c.parser.entities.CTypename;
-import cz.mg.c.parser.entities.CVariable;
+import cz.mg.c.parser.entities.*;
 import cz.mg.c.writer.formatters.VariableFormatter;
 import cz.mg.collections.list.List;
 import cz.mg.tokenizer.entities.tokens.NumberToken;
+import cz.mg.tokenizer.entities.tokens.OperatorToken;
 import cz.mg.writer.test.LineValidator;
 
 public @Test class VariableFormatterTest {
@@ -20,6 +18,7 @@ public @Test class VariableFormatterTest {
         test.testFormatNamed();
         test.testFormatAnonymous();
         test.testFormatArray();
+        test.testFormatArrays();
         test.testFormatMultiLine();
         test.testFormatFunctionPointer();
 
@@ -67,8 +66,41 @@ public @Test class VariableFormatterTest {
         );
     }
 
+    private void testFormatArrays() {
+        CVariable variable = new CVariable(
+            new CType(new CTypename("int"), false, new List<>(), new List<>(
+                new CArray(new List<>(new NumberToken("2",  0))),
+                new CArray(new List<>(new NumberToken("3", 0), new OperatorToken("*", 0), new NumberToken("3", 0)))
+            )),
+            "foo"
+        );
+
+        lineValidator.validate(
+            variableFormatter.format(variable),
+            "int foo[2][3*3]"
+        );
+    }
+
     private void testFormatMultiLine() {
-        // TODO
+        CStruct struct = new CStruct(null, new List<>(
+            new CVariable(new CType(new CTypename("int"), false, new List<>(), new List<>()), "i")
+        ));
+
+        CType type = new CType(
+            struct,
+            true,
+            new List<>(new CPointer(true)),
+            new List<>(new CArray(new List<>(new NumberToken("3", 0))))
+        );
+
+        CVariable variable = new CVariable(type, "foo");
+
+        lineValidator.validate(
+            variableFormatter.format(variable),
+            "const struct {",
+            "    int i;",
+            "}* const foo[3]"
+        );
     }
 
     private void testFormatFunctionPointer() {
