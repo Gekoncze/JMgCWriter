@@ -3,6 +3,8 @@
 
 ### SOON ###
     implement TypedefFormatter + tests
+        + handle function pointers properly
+
     add test for CEntityFormatters
 
     finish Formatter implementation + test
@@ -16,3 +18,5 @@
             ability to specify list of leading and trailing directives
 
     finish implementation for Writer + test
+
+    add support for varargs
