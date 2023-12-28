@@ -10,6 +10,7 @@ public @Test class AllTests {
         EnumFormatterTest.main(args);
         ExpressionFormatterTest.main(args);
         FieldsFormatterTest.main(args);
+        FunctionFormatterTest.main(args);
         ParametersFormatterTest.main(args);
         StructFormatterTest.main(args);
         TokenFormatterTest.main(args);

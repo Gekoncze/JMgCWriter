@@ -62,6 +62,10 @@ public @Service class TokenFormatter {
             return "/*" + token.getText() + "*/";
         }
 
+        if (token instanceof WhitespaceToken) {
+            return token.getText();
+        }
+
         throw new UnsupportedOperationException(
                 "Unsupported token of type " + token.getClass().getSimpleName() + "."
         );
