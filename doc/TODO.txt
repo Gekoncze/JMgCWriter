@@ -1,9 +1,8 @@
 ### NOW ###
-    ...
+    FunctionFormatter
 
 ### SOON ###
     implement individual formatters + add tests
-        FunctionFormatter
         FunctionPointerFormatter
             handle name, const, pointers and arrays correctly
         TypedefFormatter

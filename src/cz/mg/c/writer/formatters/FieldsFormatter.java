@@ -5,6 +5,7 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.parser.entities.CVariable;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
+import cz.mg.collections.list.ReadableList;
 
 public @Service class FieldsFormatter {
     private static volatile @Service FieldsFormatter instance;
@@ -26,7 +27,7 @@ public @Service class FieldsFormatter {
     private FieldsFormatter() {
     }
 
-    public @Mandatory List<String> format(@Mandatory List<CVariable> variables) {
+    public @Mandatory List<String> format(@Mandatory ReadableList<CVariable> variables) {
         List<String> body = new List<>();
         for (CVariable variable : variables) {
             List<String> lines = variableFormatter.format(variable);
