@@ -2,14 +2,11 @@
     ...
 
 ### SOON ###
-    implement individual formatters + add tests
-        TypedefFormatter
-        + make sure that ; is added when formatted for statements
+    implement TypedefFormatter + tests
+    add test for CEntityFormatters
 
-    add test for classes
-        Formatter
-        Writer
-        CEntityFormatters
+    finish Formatter implementation + test
+        make sure that semicolon is added at the end of statements
 
 ### LATER ###
     add support for directives and macro definitions
@@ -17,3 +14,5 @@
         could be either wrapper or inheritance
         only limited functionality will be provided
             ability to specify list of leading and trailing directives
+
+    finish implementation for Writer + test
