@@ -2,8 +2,6 @@
     ...
 
 ### SOON ###
-    add VariableFormatter test
-
     implement individual formatters + add tests
         StructFormatter
         UnionFormatter
@@ -14,7 +12,8 @@
         TypedefFormatter
         + make sure that ; is added when formatted for statements
 
-    add more type formatter tests
+    add more TypeFormatter tests
+    add more VariableFormatter test
 
     add test for classes
         Indentation

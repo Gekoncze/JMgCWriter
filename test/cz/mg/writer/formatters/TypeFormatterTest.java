@@ -22,6 +22,7 @@ public @Test class TypeFormatterTest {
         test.testFormatStruct();
         test.testFormatUnion();
         test.testFormatEnum();
+        test.testFormatMultiLine();
         test.testFormatFunctionPointer();
 
         System.out.println("OK");
@@ -88,6 +89,10 @@ public @Test class TypeFormatterTest {
     }
 
     private void testFormatEnum() {
+        // TODO
+    }
+
+    private void testFormatMultiLine() {
         // TODO
     }
 
