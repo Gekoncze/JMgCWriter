@@ -9,8 +9,8 @@ import cz.mg.c.parser.entities.CTypename;
 import cz.mg.c.parser.entities.CVariable;
 import cz.mg.c.writer.formatters.VariableFormatter;
 import cz.mg.collections.list.List;
-import cz.mg.test.Assert;
 import cz.mg.tokenizer.entities.tokens.NumberToken;
+import cz.mg.writer.test.LineValidator;
 
 public @Test class VariableFormatterTest {
     public static void main(String[] args) {
@@ -27,6 +27,7 @@ public @Test class VariableFormatterTest {
     }
 
     private final @Service VariableFormatter variableFormatter = VariableFormatter.getInstance();
+    private final @Service LineValidator lineValidator = LineValidator.getInstance();
 
     private void testFormatNamed() {
         CVariable variable = new CVariable(
@@ -34,9 +35,10 @@ public @Test class VariableFormatterTest {
                 "foo"
         );
 
-        Assert.assertThatCollections(new List<>("int foo"), variableFormatter.format(variable))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                variableFormatter.format(variable),
+                "int foo"
+        );
     }
 
     private void testFormatAnonymous() {
@@ -45,9 +47,10 @@ public @Test class VariableFormatterTest {
                 null
         );
 
-        Assert.assertThatCollections(new List<>("int"), variableFormatter.format(variable))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                variableFormatter.format(variable),
+                "int"
+        );
     }
 
     private void testFormatArray() {
@@ -58,9 +61,10 @@ public @Test class VariableFormatterTest {
                 "foo"
         );
 
-        Assert.assertThatCollections(new List<>("int foo[5]"), variableFormatter.format(variable))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                variableFormatter.format(variable),
+                "int foo[5]"
+        );
     }
 
     private void testFormatMultiLine() {

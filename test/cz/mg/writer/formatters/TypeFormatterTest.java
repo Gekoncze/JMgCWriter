@@ -8,6 +8,7 @@ import cz.mg.c.parser.entities.CTypename;
 import cz.mg.c.writer.formatters.TypeFormatter;
 import cz.mg.collections.list.List;
 import cz.mg.test.Assert;
+import cz.mg.writer.test.LineValidator;
 
 public @Test class TypeFormatterTest {
     public static void main(String[] args) {
@@ -29,19 +30,22 @@ public @Test class TypeFormatterTest {
     }
 
     private final @Service TypeFormatter typeFormatter = TypeFormatter.getInstance();
+    private final @Service LineValidator lineValidator = LineValidator.getInstance();
 
     private void testFormatTypename() {
         CType type = new CType(new CTypename("int"), false, new List<>(), new List<>());
-        Assert.assertThatCollections(new List<>("int"), typeFormatter.format(type))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                typeFormatter.format(type),
+                "int"
+        );
     }
 
     private void testFormatConstant() {
         CType type = new CType(new CTypename("int"), true, new List<>(), new List<>());
-        Assert.assertThatCollections(new List<>("const int"), typeFormatter.format(type))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                typeFormatter.format(type),
+                "const int"
+        );
     }
 
     private void testFormatPointersWithoutConst() {
@@ -51,9 +55,10 @@ public @Test class TypeFormatterTest {
                 new List<>(new CPointer(false), new CPointer(false)),
                 new List<>()
         );
-        Assert.assertThatCollections(new List<>("int**"), typeFormatter.format(type))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                typeFormatter.format(type),
+                "int**"
+        );
     }
 
     private void testFormatPointersWithConst() {
@@ -63,9 +68,10 @@ public @Test class TypeFormatterTest {
                 new List<>(new CPointer(true), new CPointer(true)),
                 new List<>()
         );
-        Assert.assertThatCollections(new List<>("int* const * const"), typeFormatter.format(type))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                typeFormatter.format(type),
+                "int* const * const"
+        );
     }
 
     private void testFormatPointersWithMixedConst() {
@@ -75,9 +81,10 @@ public @Test class TypeFormatterTest {
                 new List<>(new CPointer(true), new CPointer(false), new CPointer(false)),
                 new List<>()
         );
-        Assert.assertThatCollections(new List<>("int* const **"), typeFormatter.format(type))
-                .withPrintFunction(line -> '"' + line + '"')
-                .areEqual();
+        lineValidator.validate(
+                typeFormatter.format(type),
+                "int* const **"
+        );
     }
 
     private void testFormatStruct() {
