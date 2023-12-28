@@ -5,6 +5,7 @@ import cz.mg.annotations.classes.Test;
 import cz.mg.c.parser.entities.*;
 import cz.mg.c.writer.formatters.TypeFormatter;
 import cz.mg.collections.list.List;
+import cz.mg.tokenizer.entities.tokens.NumberToken;
 import cz.mg.writer.test.LineValidator;
 
 public @Test class TypeFormatterTest {
@@ -20,7 +21,6 @@ public @Test class TypeFormatterTest {
         test.testFormatStruct();
         test.testFormatUnion();
         test.testFormatEnum();
-        test.testFormatMultiLine();
         test.testFormatFunctionPointer();
 
         System.out.println("OK");
@@ -97,15 +97,27 @@ public @Test class TypeFormatterTest {
     }
 
     private void testFormatUnion() {
-        // TODO
+        CVariable variable = new CVariable(new CType(new CTypename("int"), false, new List<>(), new List<>()), "i");
+        CUnion union = new CUnion(null, new List<>(variable));
+        CType type = new CType(union, true, new List<>(new CPointer()), new List<>());
+        lineValidator.validate(
+            typeFormatter.format(type),
+            "const union {",
+            "    int i;",
+            "}*"
+        );
     }
 
     private void testFormatEnum() {
-        // TODO
-    }
-
-    private void testFormatMultiLine() {
-        // TODO
+        CEnumEntry entry = new CEnumEntry("ONE", new List<>(new NumberToken("1", 0)));
+        CEnum enom = new CEnum(null, new List<>(entry));
+        CType type = new CType(enom, true, new List<>(new CPointer()), new List<>());
+        lineValidator.validate(
+            typeFormatter.format(type),
+            "const enum {",
+            "    ONE = 1",
+            "}*"
+        );
     }
 
     private void testFormatFunctionPointer() {
