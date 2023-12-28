@@ -5,6 +5,7 @@ import cz.mg.writer.formatters.*;
 
 public @Test class AllTests {
     public static void main(String[] args) {
+        // cz.mg.c.writer.formatters
         ExpressionFormatterTest.main(args);
         FieldsFormatterTest.main(args);
         StructFormatterTest.main(args);
@@ -12,5 +13,8 @@ public @Test class AllTests {
         TypeFormatterTest.main(args);
         UnionFormatterTest.main(args);
         VariableFormatterTest.main(args);
+
+        // cz.mg.c.writer
+        IndentationTest.main(args);
     }
 }
