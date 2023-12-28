@@ -2,7 +2,6 @@ package cz.mg.c.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.parser.entities.CArray;
 import cz.mg.c.parser.entities.CFunction;
 import cz.mg.c.parser.entities.CVariable;
 import cz.mg.collections.list.List;
@@ -17,7 +16,7 @@ public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
                 if (instance == null) {
                     instance = new VariableFormatter();
                     instance.typeFormatter = TypeFormatter.getInstance();
-                    instance.expressionFormatter = ExpressionFormatter.getInstance();
+                    instance.arrayFormatter = ArrayFormatter.getInstance();
                 }
             }
         }
@@ -25,7 +24,7 @@ public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
     }
 
     private @Service TypeFormatter typeFormatter;
-    private @Service ExpressionFormatter expressionFormatter;
+    private @Service ArrayFormatter arrayFormatter;
 
     private VariableFormatter() {
     }
@@ -64,14 +63,6 @@ public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
     }
 
     private @Mandatory String addArrays(@Mandatory String line, @Mandatory CVariable variable) {
-        StringBuilder builder = new StringBuilder(line);
-
-        for (CArray array : variable.getType().getArrays()) {
-            builder.append("[");
-            builder.append(expressionFormatter.formatSingleLine(array.getExpression()));
-            builder.append("]");
-        }
-
-        return builder.toString().trim();
+        return line + arrayFormatter.format(variable.getType().getArrays());
     }
 }
