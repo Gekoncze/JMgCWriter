@@ -5,7 +5,7 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.parser.entities.CFile;
 import cz.mg.c.parser.entities.CFunction;
 import cz.mg.c.parser.entities.CMainEntity;
-import cz.mg.c.writer.formatters.CMainEntityFormatters;
+import cz.mg.c.writer.formatters.MainEntityFormatters;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
 
@@ -17,14 +17,14 @@ public @Service class Formatter {
             synchronized (Service.class) {
                 if (instance == null) {
                     instance = new Formatter();
-                    instance.formatters = CMainEntityFormatters.getInstance();
+                    instance.formatters = MainEntityFormatters.getInstance();
                 }
             }
         }
         return instance;
     }
 
-    private @Service CMainEntityFormatters formatters;
+    private @Service MainEntityFormatters formatters;
 
     private Formatter() {
     }

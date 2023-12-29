@@ -6,7 +6,7 @@ import cz.mg.c.parser.entities.*;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
 
-public @Service class TypeFormatter implements CEntityFormatter<CType> {
+public @Service class TypeFormatter implements EntityFormatter<CType> {
     private static volatile @Service TypeFormatter instance;
 
     public static @Service TypeFormatter getInstance() {

@@ -6,7 +6,7 @@ import cz.mg.c.parser.entities.CUnion;
 import cz.mg.c.writer.Indentation;
 import cz.mg.collections.list.List;
 
-public @Service class UnionFormatter implements CEntityFormatter<CUnion> {
+public @Service class UnionFormatter implements EntityFormatter<CUnion> {
     private static volatile @Service UnionFormatter instance;
 
     public static @Service UnionFormatter getInstance() {

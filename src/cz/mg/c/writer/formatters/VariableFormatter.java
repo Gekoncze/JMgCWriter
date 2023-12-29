@@ -9,7 +9,7 @@ import cz.mg.collections.list.ListItem;
 
 import java.util.Objects;
 
-public @Service class VariableFormatter implements CEntityFormatter<CVariable> {
+public @Service class VariableFormatter implements EntityFormatter<CVariable> {
     private static volatile @Service VariableFormatter instance;
 
     public static @Service VariableFormatter getInstance() {

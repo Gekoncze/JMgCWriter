@@ -10,7 +10,7 @@ import cz.mg.collections.list.ListItem;
 
 import java.util.Objects;
 
-public @Service class TypedefFormatter implements CEntityFormatter<CTypedef> {
+public @Service class TypedefFormatter implements EntityFormatter<CTypedef> {
     private static volatile @Service TypedefFormatter instance;
 
     public static @Service TypedefFormatter getInstance() {

@@ -7,7 +7,7 @@ import cz.mg.c.writer.Indentation;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
 
-public @Service class FunctionFormatter implements CEntityFormatter<CFunction> {
+public @Service class FunctionFormatter implements EntityFormatter<CFunction> {
     private static volatile @Service FunctionFormatter instance;
 
     public static @Service FunctionFormatter getInstance() {

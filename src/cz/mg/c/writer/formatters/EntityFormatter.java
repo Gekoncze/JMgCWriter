@@ -5,6 +5,6 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.parser.entities.CEntity;
 import cz.mg.collections.list.List;
 
-public @Service interface CEntityFormatter<E extends CEntity> {
+public @Service interface EntityFormatter<E extends CEntity> {
     @Mandatory List<String> format(@Mandatory E entity);
 }

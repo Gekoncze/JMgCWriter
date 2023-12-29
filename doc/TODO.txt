@@ -2,7 +2,7 @@
     ...
 
 ### SOON ###
-    add test for CMainEntityFormatters
+    add test for MainEntityFormatters
     add test for Formatter
 
 ### LATER ###

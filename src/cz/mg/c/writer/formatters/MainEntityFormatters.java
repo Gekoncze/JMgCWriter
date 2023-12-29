@@ -7,14 +7,14 @@ import cz.mg.collections.components.Capacity;
 import cz.mg.collections.map.Map;
 import cz.mg.collections.pair.Pair;
 
-public @Service class CMainEntityFormatters {
-    private static volatile @Service CMainEntityFormatters instance;
+public @Service class MainEntityFormatters {
+    private static volatile @Service MainEntityFormatters instance;
 
-    public static @Service CMainEntityFormatters getInstance() {
+    public static @Service MainEntityFormatters getInstance() {
         if (instance == null) {
             synchronized (Service.class) {
                 if (instance == null) {
-                    instance = new CMainEntityFormatters();
+                    instance = new MainEntityFormatters();
                     instance.formatters = new Map<>(
                         new Capacity(50),
                         new Pair<>(CStruct.class, StructFormatter.getInstance()),
@@ -30,16 +30,16 @@ public @Service class CMainEntityFormatters {
         return instance;
     }
 
-    private @Service Map<Class<? extends CEntity>, CEntityFormatter<? extends CEntity>> formatters;
+    private @Service Map<Class<? extends CEntity>, EntityFormatter<? extends CEntity>> formatters;
 
-    private CMainEntityFormatters() {
+    private MainEntityFormatters() {
     }
 
     @SuppressWarnings("unchecked")
-    public <E extends CEntity> @Mandatory CEntityFormatter<E> get(@Mandatory E entity) {
-        CEntityFormatter<CEntity> formatter = (CEntityFormatter<CEntity>) formatters.getOptional(entity.getClass());
+    public <E extends CEntity> @Mandatory EntityFormatter<E> get(@Mandatory E entity) {
+        EntityFormatter<CEntity> formatter = (EntityFormatter<CEntity>) formatters.getOptional(entity.getClass());
         if (formatter != null) {
-            return (CEntityFormatter<E>) formatter;
+            return (EntityFormatter<E>) formatter;
         } else {
             throw new UnsupportedOperationException(
                 "No formatter found for " + entity.getClass().getSimpleName() + "."

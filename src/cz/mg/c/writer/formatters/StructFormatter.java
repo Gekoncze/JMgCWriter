@@ -6,7 +6,7 @@ import cz.mg.c.parser.entities.CStruct;
 import cz.mg.c.writer.Indentation;
 import cz.mg.collections.list.List;
 
-public @Service class StructFormatter implements CEntityFormatter<CStruct> {
+public @Service class StructFormatter implements EntityFormatter<CStruct> {
     private static volatile @Service StructFormatter instance;
 
     public static @Service StructFormatter getInstance() {

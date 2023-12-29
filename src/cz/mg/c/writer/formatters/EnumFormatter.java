@@ -7,7 +7,7 @@ import cz.mg.c.parser.entities.CEnumEntry;
 import cz.mg.c.writer.Indentation;
 import cz.mg.collections.list.List;
 
-public @Service class EnumFormatter implements CEntityFormatter<CEnum> {
+public @Service class EnumFormatter implements EntityFormatter<CEnum> {
     private static volatile @Service EnumFormatter instance;
 
     public static @Service EnumFormatter getInstance() {
