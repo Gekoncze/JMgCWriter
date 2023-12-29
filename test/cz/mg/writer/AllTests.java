@@ -17,6 +17,7 @@ public @Test class AllTests {
         PointerFormatterTest.main(args);
         StructFormatterTest.main(args);
         TokenFormatterTest.main(args);
+        TypedefFormatterTest.main(args);
         TypeFormatterTest.main(args);
         UnionFormatterTest.main(args);
         VariableFormatterTest.main(args);

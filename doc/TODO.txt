@@ -2,9 +2,6 @@
     ...
 
 ### SOON ###
-    implement TypedefFormatter + tests
-        + handle function pointers properly
-
     add test for CEntityFormatters
 
     finish Formatter implementation + test
