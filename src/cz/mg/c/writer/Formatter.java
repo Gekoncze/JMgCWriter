@@ -32,7 +32,7 @@ public @Service class Formatter {
     public @Mandatory List<String> format(@Mandatory CFile file) {
         List<String> lines = new List<>();
         for (CMainEntity entity : file.getEntities()) {
-            lines.addCollectionLast(formatters.format(entity));
+            lines.addCollectionLast(formatters.get(entity).format(entity));
             if (!(entity instanceof CFunction)) {
                 addSemicolon(lines);
             }
