@@ -8,14 +8,14 @@ import cz.mg.collections.list.List;
 import cz.mg.collections.map.Map;
 import cz.mg.collections.pair.Pair;
 
-public @Service class CEntityFormatters {
-    private static volatile @Service CEntityFormatters instance;
+public @Service class CMainEntityFormatters {
+    private static volatile @Service CMainEntityFormatters instance;
 
-    public static @Service CEntityFormatters getInstance() {
+    public static @Service CMainEntityFormatters getInstance() {
         if (instance == null) {
             synchronized (Service.class) {
                 if (instance == null) {
-                    instance = new CEntityFormatters();
+                    instance = new CMainEntityFormatters();
                     instance.formatters = new Map<>(
                         new Capacity(50),
                         new Pair<>(CStruct.class, StructFormatter.getInstance()),
@@ -33,7 +33,7 @@ public @Service class CEntityFormatters {
 
     private @Service Map<Class<? extends CEntity>, CEntityFormatter<? extends CEntity>> formatters;
 
-    private CEntityFormatters() {
+    private CMainEntityFormatters() {
     }
 
     public @Mandatory List<String> format(@Mandatory CEntity entity) {

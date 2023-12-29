@@ -2,10 +2,8 @@
     ...
 
 ### SOON ###
-    add test for CEntityFormatters
-
-    finish Formatter implementation + test
-        make sure that semicolon is added at the end of statements
+    add test for CMainEntityFormatters
+    add test for Formatter
 
 ### LATER ###
     add support for directives and macro definitions
