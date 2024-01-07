@@ -2,15 +2,13 @@
     ...
 
 ### SOON ###
-    add test for Formatter
-
-### LATER ###
     add support for directives and macro definitions
         these should be as wrapper on top of CFile
         could be either wrapper or inheritance
         only limited functionality will be provided
             ability to specify list of leading and trailing directives
 
+### LATER ###
+    add test for Formatter
     finish implementation for Writer + test
-
     add support for varargs
