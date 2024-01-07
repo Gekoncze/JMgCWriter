@@ -1,11 +1,12 @@
 package cz.mg.writer;
 
 import cz.mg.annotations.classes.Test;
-import cz.mg.writer.formatters.*;
+import cz.mg.writer.services.IndentationTest;
+import cz.mg.writer.services.formatters.*;
 
 public @Test class AllTests {
     public static void main(String[] args) {
-        // cz.mg.c.writer.formatters
+        // cz.mg.c.writer.services.formatters
         ArrayFormatterTest.main(args);
         EnumEntryFormatterTest.main(args);
         EnumFormatterTest.main(args);
@@ -23,7 +24,7 @@ public @Test class AllTests {
         UnionFormatterTest.main(args);
         VariableFormatterTest.main(args);
 
-        // cz.mg.c.writer
+        // cz.mg.c.writer.services
         IndentationTest.main(args);
     }
 }
