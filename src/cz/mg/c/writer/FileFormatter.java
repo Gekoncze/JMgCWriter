@@ -9,14 +9,14 @@ import cz.mg.c.writer.formatters.MainEntityFormatters;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
 
-public @Service class Formatter {
-    private static volatile @Service Formatter instance;
+public @Service class FileFormatter {
+    private static volatile @Service FileFormatter instance;
 
-    public static @Service Formatter getInstance() {
+    public static @Service FileFormatter getInstance() {
         if (instance == null) {
             synchronized (Service.class) {
                 if (instance == null) {
-                    instance = new Formatter();
+                    instance = new FileFormatter();
                     instance.formatters = MainEntityFormatters.getInstance();
                 }
             }
@@ -26,7 +26,7 @@ public @Service class Formatter {
 
     private @Service MainEntityFormatters formatters;
 
-    private Formatter() {
+    private FileFormatter() {
     }
 
     public @Mandatory List<String> format(@Mandatory CFile file) {

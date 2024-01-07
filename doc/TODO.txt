@@ -1,14 +1,12 @@
 ### NOW ###
-    ...
+    implement HeaderFileFormatter
+    implement SourceFileFormatter
 
 ### SOON ###
-    add support for directives and macro definitions
-        these should be as wrapper on top of CFile
-        could be either wrapper or inheritance
-        only limited functionality will be provided
-            ability to specify list of leading and trailing directives
+    add test for FileFormatter
+    add test for HeaderFileFormatter
+    add test for SourceFileFormatter
 
 ### LATER ###
-    add test for Formatter
     finish implementation for Writer + test
     add support for varargs

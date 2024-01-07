@@ -2,11 +2,10 @@ package cz.mg.c.writer;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.entities.CFile;
-import cz.mg.collections.list.List;
-import cz.mg.collections.services.StringJoiner;
-import cz.mg.file.File;
-import cz.mg.file.FileWriter;
+import cz.mg.c.entities.CHeaderFile;
+import cz.mg.c.entities.CSourceFile;
+import cz.mg.file.page.Page;
+import cz.mg.file.page.PageWriter;
 
 public @Service class Writer {
     private static volatile @Service Writer instance;
@@ -16,23 +15,34 @@ public @Service class Writer {
             synchronized (Service.class) {
                 if (instance == null) {
                     instance = new Writer();
-                    instance.writer = FileWriter.getInstance();
-                    instance.formatter = Formatter.getInstance();
-                    instance.joiner = StringJoiner.getInstance();
+                    instance.writer = PageWriter.getInstance();
+                    instance.headerFileFormatter = HeaderFileFormatter.getInstance();
+                    instance.sourceFileFormatter = SourceFileFormatter.getInstance();
                 }
             }
         }
         return instance;
     }
 
-    private @Service FileWriter writer;
-    private @Service Formatter formatter;
-    private @Service StringJoiner joiner;
+    private @Service PageWriter writer;
+    private @Service HeaderFileFormatter headerFileFormatter;
+    private @Service SourceFileFormatter sourceFileFormatter;
 
-    public void write(@Mandatory CFile cFile) {
-        List<String> lines = formatter.format(cFile);
-        String content = joiner.join(lines, "\b");
-        File file = new File(cFile.getPath(), content);
-        writer.write(file);
+    public void write(@Mandatory CHeaderFile headerFile) {
+        writer.write(
+            new Page(
+                headerFile.getPath(),
+                headerFileFormatter.format(headerFile)
+            )
+        );
+    }
+
+    public void write(@Mandatory CSourceFile sourceFile) {
+        writer.write(
+            new Page(
+                sourceFile.getPath(),
+                sourceFileFormatter.format(sourceFile)
+            )
+        );
     }
 }
