@@ -3,8 +3,8 @@ package cz.mg.c.writer.formatters;
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
-import cz.mg.c.parser.entities.CFunction;
-import cz.mg.c.parser.entities.CTypedef;
+import cz.mg.c.entities.CFunction;
+import cz.mg.c.entities.CTypedef;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
 

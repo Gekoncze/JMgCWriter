@@ -2,7 +2,7 @@ package cz.mg.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.classes.Test;
-import cz.mg.c.parser.entities.CEnumEntry;
+import cz.mg.c.entities.CEnumEntry;
 import cz.mg.c.writer.formatters.EnumEntryFormatter;
 import cz.mg.collections.list.List;
 import cz.mg.test.Assert;

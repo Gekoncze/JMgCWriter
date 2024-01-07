@@ -2,7 +2,7 @@ package cz.mg.c.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.parser.entities.CEnumEntry;
+import cz.mg.c.entities.CEnumEntry;
 
 public @Service class EnumEntryFormatter {
     private static volatile @Service EnumEntryFormatter instance;

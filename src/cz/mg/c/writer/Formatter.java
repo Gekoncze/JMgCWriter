@@ -2,9 +2,9 @@ package cz.mg.c.writer;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.parser.entities.CFile;
-import cz.mg.c.parser.entities.CFunction;
-import cz.mg.c.parser.entities.CMainEntity;
+import cz.mg.c.entities.CFile;
+import cz.mg.c.entities.CFunction;
+import cz.mg.c.entities.CMainEntity;
 import cz.mg.c.writer.formatters.MainEntityFormatters;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;

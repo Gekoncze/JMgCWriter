@@ -3,7 +3,7 @@ package cz.mg.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.classes.Test;
-import cz.mg.c.parser.entities.*;
+import cz.mg.c.entities.*;
 import cz.mg.c.writer.formatters.ParametersFormatter;
 import cz.mg.collections.list.List;
 import cz.mg.writer.test.LineValidator;

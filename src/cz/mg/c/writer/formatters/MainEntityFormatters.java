@@ -2,7 +2,7 @@ package cz.mg.c.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.parser.entities.*;
+import cz.mg.c.entities.*;
 import cz.mg.collections.components.Capacity;
 import cz.mg.collections.map.Map;
 import cz.mg.collections.pair.Pair;

@@ -2,7 +2,7 @@ package cz.mg.c.writer.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.parser.entities.CUnion;
+import cz.mg.c.entities.CUnion;
 import cz.mg.c.writer.Indentation;
 import cz.mg.collections.list.List;
 

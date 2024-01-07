@@ -2,7 +2,7 @@ package cz.mg.c.writer;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.parser.entities.CFile;
+import cz.mg.c.entities.CFile;
 import cz.mg.collections.list.List;
 import cz.mg.collections.services.StringJoiner;
 import cz.mg.file.File;
