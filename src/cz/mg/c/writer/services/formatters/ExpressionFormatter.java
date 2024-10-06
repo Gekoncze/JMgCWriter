@@ -2,13 +2,13 @@ package cz.mg.c.writer.services.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
+import cz.mg.collections.components.StringJoiner;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ReadableList;
-import cz.mg.collections.services.StringJoiner;
-import cz.mg.tokenizer.entities.Token;
-import cz.mg.tokenizer.entities.tokens.NumberToken;
-import cz.mg.tokenizer.entities.tokens.WhitespaceToken;
-import cz.mg.tokenizer.entities.tokens.WordToken;
+import cz.mg.token.Token;
+import cz.mg.token.tokens.NumberToken;
+import cz.mg.token.tokens.WhitespaceToken;
+import cz.mg.token.tokens.WordToken;
 
 public @Service class ExpressionFormatter {
     private static volatile @Service ExpressionFormatter instance;
@@ -19,7 +19,6 @@ public @Service class ExpressionFormatter {
                 if (instance == null) {
                     instance = new ExpressionFormatter();
                     instance.tokenFormatter = TokenFormatter.getInstance();
-                    instance.stringJoiner = StringJoiner.getInstance();
                 }
             }
         }
@@ -27,13 +26,12 @@ public @Service class ExpressionFormatter {
     }
 
     private @Service TokenFormatter tokenFormatter;
-    private @Service StringJoiner stringJoiner;
 
     private ExpressionFormatter() {
     }
 
     public @Mandatory String formatSingleLine(@Mandatory ReadableList<Token> expression) {
-        return stringJoiner.join(formatMultiLine(expression), " ");
+        return new StringJoiner<>(formatMultiLine(expression)).withDelimiter(" ").join();
     }
 
     public @Mandatory List<String> formatMultiLine(@Mandatory ReadableList<Token> expression) {

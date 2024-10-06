@@ -3,7 +3,7 @@ package cz.mg.c.writer.services.formatters;
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.entities.CFunction;
-import cz.mg.c.entities.CType;
+import cz.mg.c.entities.types.CType;
 import cz.mg.c.writer.services.Indentation;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;

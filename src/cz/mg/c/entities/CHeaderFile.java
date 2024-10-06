@@ -14,7 +14,7 @@ public @Entity class CHeaderFile extends CFile {
     public CHeaderFile() {
     }
 
-    public CHeaderFile(Path path, List<CMainEntity> entities) {
+    public CHeaderFile(Path path, List<CEntity> entities) {
         super(path, entities);
     }
 

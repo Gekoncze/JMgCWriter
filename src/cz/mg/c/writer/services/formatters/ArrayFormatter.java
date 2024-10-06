@@ -2,7 +2,7 @@ package cz.mg.c.writer.services.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.entities.CArray;
+import cz.mg.c.entities.types.CArrayType;
 import cz.mg.collections.list.List;
 
 public @Service class ArrayFormatter {
@@ -25,10 +25,10 @@ public @Service class ArrayFormatter {
     private ArrayFormatter() {
     }
 
-    public @Mandatory String format(@Mandatory List<CArray> arrays) {
+    public @Mandatory String format(@Mandatory List<CArrayType> arrays) {
         StringBuilder builder = new StringBuilder();
 
-        for (CArray array : arrays) {
+        for (CArrayType array : arrays) {
             builder.append("[");
             builder.append(expressionFormatter.formatSingleLine(array.getExpression()));
             builder.append("]");

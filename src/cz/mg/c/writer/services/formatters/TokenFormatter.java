@@ -2,8 +2,12 @@ package cz.mg.c.writer.services.formatters;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.tokenizer.entities.Token;
-import cz.mg.tokenizer.entities.tokens.*;
+import cz.mg.token.Token;
+import cz.mg.token.tokens.*;
+import cz.mg.token.tokens.comment.MultiLineCommentToken;
+import cz.mg.token.tokens.comment.SingleLineCommentToken;
+import cz.mg.token.tokens.quote.DoubleQuoteToken;
+import cz.mg.token.tokens.quote.SingleQuoteToken;
 
 public @Service class TokenFormatter {
     private static volatile @Service TokenFormatter instance;
@@ -31,15 +35,7 @@ public @Service class TokenFormatter {
             return token.getText();
         }
 
-        if (token instanceof BracketToken) {
-            return token.getText();
-        }
-
-        if (token instanceof OperatorToken) {
-            return token.getText();
-        }
-
-        if (token instanceof SeparatorToken) {
+        if (token instanceof SymbolToken) {
             return token.getText();
         }
 

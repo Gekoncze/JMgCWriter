@@ -14,7 +14,7 @@ public @Entity class CSourceFile extends CFile {
     public CSourceFile() {
     }
 
-    public CSourceFile(Path path, List<CMainEntity> entities) {
+    public CSourceFile(Path path, List<CEntity> entities) {
         super(path, entities);
     }
 
