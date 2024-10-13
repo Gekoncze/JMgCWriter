@@ -2,8 +2,6 @@ package cz.mg.c.writer;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.entities.CHeaderFile;
-import cz.mg.c.entities.CSourceFile;
 import cz.mg.c.writer.services.HeaderFileFormatter;
 import cz.mg.c.writer.services.SourceFileFormatter;
 import cz.mg.file.page.Page;
