@@ -5,7 +5,7 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.entities.CEntity;
 import cz.mg.c.entities.CFile;
 import cz.mg.c.entities.CFunction;
-import cz.mg.c.writer.services.formatters.FileEntityFormatters;
+import cz.mg.c.writer.services.formatters.maps.FileEntityFormatters;
 import cz.mg.collections.list.List;
 import cz.mg.token.Token;
 import cz.mg.token.tokens.SymbolToken;

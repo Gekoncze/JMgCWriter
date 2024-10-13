@@ -1,8 +1,9 @@
-package cz.mg.c.writer.services.formatters;
+package cz.mg.c.writer.services.formatters.maps;
 
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.entities.*;
+import cz.mg.c.writer.services.formatters.*;
 import cz.mg.collections.map.Map;
 import cz.mg.collections.pair.Pair;
 
@@ -36,13 +37,6 @@ public @Service class FileEntityFormatters {
 
     @SuppressWarnings("unchecked")
     public <E extends CEntity> @Mandatory EntityFormatter<E> get(@Mandatory E entity) {
-        EntityFormatter<CEntity> formatter = (EntityFormatter<CEntity>) formatters.getOptional(entity.getClass());
-        if (formatter != null) {
-            return (EntityFormatter<E>) formatter;
-        } else {
-            throw new UnsupportedOperationException(
-                "No formatter found for " + entity.getClass().getSimpleName() + "."
-            );
-        }
+        return (EntityFormatter<E>) formatters.get(entity.getClass());
     }
 }

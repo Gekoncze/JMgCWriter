@@ -4,6 +4,7 @@ import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.classes.Test;
 import cz.mg.c.entities.*;
 import cz.mg.c.writer.services.formatters.*;
+import cz.mg.c.writer.services.formatters.maps.FileEntityFormatters;
 import cz.mg.test.Assert;
 
 public @Test class MainEntityFormattersTest {
