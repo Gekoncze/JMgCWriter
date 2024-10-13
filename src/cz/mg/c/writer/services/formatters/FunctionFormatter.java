@@ -5,6 +5,7 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.entities.CFunction;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListItem;
+import cz.mg.token.Token;
 
 public @Service class FunctionFormatter implements EntityFormatter<CFunction> {
     private static volatile @Service FunctionFormatter instance;
@@ -14,7 +15,6 @@ public @Service class FunctionFormatter implements EntityFormatter<CFunction> {
             synchronized (Service.class) {
                 if (instance == null) {
                     instance = new FunctionFormatter();
-                    instance.indentation = Indentation.getInstance();
                     instance.typeFormatter = TypeFormatter.getInstance();
                     instance.parametersFormatter = ParametersFormatter.getInstance();
                     instance.expressionFormatter = ExpressionFormatter.getInstance();
@@ -24,7 +24,6 @@ public @Service class FunctionFormatter implements EntityFormatter<CFunction> {
         return instance;
     }
 
-    private @Service Indentation indentation;
     private @Service TypeFormatter typeFormatter;
     private @Service ParametersFormatter parametersFormatter;
     private @Service ExpressionFormatter expressionFormatter;
@@ -33,7 +32,7 @@ public @Service class FunctionFormatter implements EntityFormatter<CFunction> {
     }
 
     @Override
-    public @Mandatory List<String> format(@Mandatory CFunction function) {
+    public @Mandatory List<Token> format(@Mandatory CFunction function) {
         validate(function);
 
         List<String> lines = typeFormatter.format(function.getOutput());

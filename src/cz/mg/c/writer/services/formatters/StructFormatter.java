@@ -14,7 +14,6 @@ public @Service class StructFormatter implements EntityFormatter<CStruct> {
                 if (instance == null) {
                     instance = new StructFormatter();
                     instance.fieldsFormatter = FieldsFormatter.getInstance();
-                    instance.indentation = Indentation.getInstance();
                 }
             }
         }
@@ -22,7 +21,6 @@ public @Service class StructFormatter implements EntityFormatter<CStruct> {
     }
 
     private @Service FieldsFormatter fieldsFormatter;
-    private @Service Indentation indentation;
 
     private StructFormatter() {
     }

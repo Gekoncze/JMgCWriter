@@ -15,7 +15,6 @@ public @Service class EnumFormatter implements EntityFormatter<CEnum> {
                 if (instance == null) {
                     instance = new EnumFormatter();
                     instance.enumEntryFormatter = EnumEntryFormatter.getInstance();
-                    instance.indentation = Indentation.getInstance();
                 }
             }
         }
@@ -23,7 +22,6 @@ public @Service class EnumFormatter implements EntityFormatter<CEnum> {
     }
 
     private @Service EnumEntryFormatter enumEntryFormatter;
-    private @Service Indentation indentation;
 
     private EnumFormatter() {
     }

@@ -14,7 +14,6 @@ public @Service class UnionFormatter implements EntityFormatter<CUnion> {
                 if (instance == null) {
                     instance = new UnionFormatter();
                     instance.fieldsFormatter = FieldsFormatter.getInstance();
-                    instance.indentation = Indentation.getInstance();
                 }
             }
         }
@@ -22,7 +21,6 @@ public @Service class UnionFormatter implements EntityFormatter<CUnion> {
     }
 
     private @Service FieldsFormatter fieldsFormatter;
-    private @Service Indentation indentation;
 
     private UnionFormatter() {
     }

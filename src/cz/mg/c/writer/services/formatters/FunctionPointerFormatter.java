@@ -15,7 +15,6 @@ public @Service class FunctionPointerFormatter implements EntityFormatter<CType>
             synchronized (Service.class) {
                 if (instance == null) {
                     instance = new FunctionPointerFormatter();
-                    instance.indentation = Indentation.getInstance();
                     instance.typeFormatter = TypeFormatter.getInstance();
                     instance.parametersFormatter = ParametersFormatter.getInstance();
                     instance.pointerFormatter = PointerFormatter.getInstance();
@@ -26,7 +25,6 @@ public @Service class FunctionPointerFormatter implements EntityFormatter<CType>
         return instance;
     }
 
-    private @Service Indentation indentation;
     private @Service TypeFormatter typeFormatter;
     private @Service ParametersFormatter parametersFormatter;
     private @Service PointerFormatter pointerFormatter;
