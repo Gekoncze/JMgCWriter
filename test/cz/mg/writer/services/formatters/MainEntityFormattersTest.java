@@ -16,7 +16,7 @@ public @Test class MainEntityFormattersTest {
         System.out.println("OK");
     }
 
-    private final @Service MainEntityFormatters formatters = MainEntityFormatters.getInstance();
+    private final @Service FileEntityFormatters formatters = FileEntityFormatters.getInstance();
 
     private void testGet() {
         Assert.assertEquals(StructFormatter.class, formatters.get(new CStruct()).getClass());

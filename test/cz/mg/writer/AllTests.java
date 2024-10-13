@@ -1,7 +1,6 @@
 package cz.mg.writer;
 
 import cz.mg.annotations.classes.Test;
-import cz.mg.writer.services.IndentationTest;
 import cz.mg.writer.services.formatters.*;
 
 public @Test class AllTests {

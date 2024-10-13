@@ -1,11 +1,8 @@
 ### NOW ###
-    implement HeaderFileFormatter
-    implement SourceFileFormatter
+    ...
 
 ### SOON ###
     add test for FileFormatter
-    add test for HeaderFileFormatter
-    add test for SourceFileFormatter
 
 ### LATER ###
     finish implementation for Writer + test

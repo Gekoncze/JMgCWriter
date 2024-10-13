@@ -6,14 +6,14 @@ import cz.mg.c.entities.*;
 import cz.mg.collections.map.Map;
 import cz.mg.collections.pair.Pair;
 
-public @Service class MainEntityFormatters {
-    private static volatile @Service MainEntityFormatters instance;
+public @Service class FileEntityFormatters {
+    private static volatile @Service FileEntityFormatters instance;
 
-    public static @Service MainEntityFormatters getInstance() {
+    public static @Service FileEntityFormatters getInstance() {
         if (instance == null) {
             synchronized (Service.class) {
                 if (instance == null) {
-                    instance = new MainEntityFormatters();
+                    instance = new FileEntityFormatters();
                     instance.formatters = new Map<>(
                         new Pair<>(CStruct.class, StructFormatter.getInstance()),
                         new Pair<>(CUnion.class, UnionFormatter.getInstance()),
@@ -21,6 +21,7 @@ public @Service class MainEntityFormatters {
                         new Pair<>(CFunction.class, FunctionFormatter.getInstance()),
                         new Pair<>(CVariable.class, VariableFormatter.getInstance()),
                         new Pair<>(CTypedef.class, TypedefFormatter.getInstance())
+                        // TODO - add directive formatters
                     );
                 }
             }
@@ -30,7 +31,7 @@ public @Service class MainEntityFormatters {
 
     private @Service Map<Class<? extends CEntity>, EntityFormatter<? extends CEntity>> formatters;
 
-    private MainEntityFormatters() {
+    private FileEntityFormatters() {
     }
 
     @SuppressWarnings("unchecked")

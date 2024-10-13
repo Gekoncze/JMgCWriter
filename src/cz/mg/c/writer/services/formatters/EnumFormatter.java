@@ -4,7 +4,6 @@ import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.entities.CEnum;
 import cz.mg.c.entities.CEnumEntry;
-import cz.mg.c.writer.services.Indentation;
 import cz.mg.collections.list.List;
 
 public @Service class EnumFormatter implements EntityFormatter<CEnum> {

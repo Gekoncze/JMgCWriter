@@ -3,7 +3,6 @@ package cz.mg.c.writer.services.formatters;
 import cz.mg.annotations.classes.Service;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.entities.CUnion;
-import cz.mg.c.writer.services.Indentation;
 import cz.mg.collections.list.List;
 
 public @Service class UnionFormatter implements EntityFormatter<CUnion> {
